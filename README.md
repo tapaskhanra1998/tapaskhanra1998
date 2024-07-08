@@ -1,3 +1,4 @@
+![logo](https://github.com/tapaskhanra1998/tapaskhanra1998/blob/main/Github%20banner.jpg)
 <h1 align="center">Hi 👋, I'm Tapas Khanra</h1>
 <h3 align="center">A passionate learner of Sanskrit and Computation from India</h3>
 
