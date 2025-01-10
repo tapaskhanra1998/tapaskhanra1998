@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Popup Poster</title>
   <style>
     /* Reset */
@@ -12,95 +13,132 @@
     }
     html, body {
       height: 100%;
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', Arial, sans-serif;
+      background: #f0f2f5;
     }
 
-    /*
-      1. A hidden checkbox controls the visibility of the overlay.
-      2. By default, it's unchecked -> Overlay is visible.
-      3. When the user clicks close, it becomes checked -> Overlay is hidden.
-    */
+    /* Hidden checkbox */
     #closeOverlay {
-      display: none; /* Hide the checkbox itself */
+      display: none;
     }
 
-    /* The overlay that covers the screen */
+    /* Overlay styling */
     .poster-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.7); /* Semi-transparent dark overlay */
+      background: rgba(0, 0, 0, 0.8);
       display: flex;
       justify-content: center;
       align-items: center;
       z-index: 9999;
+      transition: opacity 0.3s ease-in-out;
     }
 
-    /*
-      When the checkbox is checked (closeOverlay:checked),
-      hide the overlay.
-    */
+    /* Hide overlay when checkbox is checked */
     #closeOverlay:checked ~ .poster-overlay {
-      display: none;
+      opacity: 0;
+      pointer-events: none;
     }
 
-    /* The white poster container */
+    /* Poster container */
     .poster-content {
       position: relative;
-      background: #fff;
-      width: 80%;
-      max-width: 600px; /* Adjust if needed */
-      padding: 1em;
-      border-radius: 8px;
+      background: linear-gradient(135deg, #ffffff, #f0f0f5);
+      width: 90%;
+      max-width: 600px;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25);
       text-align: center;
+      animation: fadeIn 0.5s ease-in-out;
     }
 
-    /* Poster image with smaller size */
+    /* Fade-in animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Poster image */
     .poster-content img {
-      max-width: 60%;
+      max-width: 70%;
       height: auto;
-      display: block;
-      margin: 0 auto 1em auto;
-      border-radius: 5px;
+      margin: 0 auto 20px;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+    .poster-content img:hover {
+      transform: scale(1.05);
     }
 
     /* Close button */
     .close-btn {
       position: absolute;
-      top: 0.5em;
-      right: 0.5em;
+      top: 15px;
+      right: 15px;
       background: #ff4d4f;
       color: #fff;
       border: none;
-      border-radius: 5px;
-      padding: 6px 12px;
+      border-radius: 50%;
+      padding: 10px;
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+      font-weight: bold;
       cursor: pointer;
-      text-decoration: none;
-      font-size: 0.9em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+      transition: background 0.3s ease, transform 0.3s ease;
     }
     .close-btn:hover {
-      background: #cc0000;
+      background: #d9363e;
+      transform: scale(1.1);
+    }
+
+    /* Text content styling */
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    p {
+      font-size: 1em;
+      color: #555;
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
 
-  <!-- 1) Hidden checkbox (unchecked by default => poster is visible). -->
+  <!-- Hidden checkbox -->
   <input type="checkbox" id="closeOverlay">
 
-  <!-- 2) The Popup Overlay (poster) -->
+  <!-- Popup overlay -->
   <div class="poster-overlay">
     <div class="poster-content">
-      <!-- 3) "Close" label replaces the 'X' sign -->
-      <label for="closeOverlay" class="close-btn">Close</label>
+      <!-- Close button -->
+      <label for="closeOverlay" class="close-btn">&times;</label>
 
-      <!-- Clickable poster linked to a form -->
+      <!-- Poster image -->
       <a href="https://forms.gle/fgiiQTLND1RTMkTe6" target="_blank">
         <img src="netsanskritlastclass.png" alt="Poster">
       </a>
 
+      <!-- Poster text content -->
       <h1>Quick Revision Class!</h1>
       <p>UGC NTA-NET 2025 Sanskrit (code-25) Quick Revision Class - Darśana!</p>
     </div>
@@ -108,4 +146,3 @@
 
 </body>
 </html>
-
